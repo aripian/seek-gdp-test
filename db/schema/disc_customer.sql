@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS discounts (
+  id SERIAL PRIMARY KEY,
+  cust_id VARCHAR,
+  disc_id VARCHAR,
+  ad_id VARCHAR,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

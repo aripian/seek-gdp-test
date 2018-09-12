@@ -1,0 +1,96 @@
+{
+  "name": "seek-gdp-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "x-start": "node dist/index.js",
+    "x-build": "node_modules/.bin/gulp build",
+    "x-dev": "node_modules/.bin/gulp build-then-watch",
+    "x-install": "node_modules/.bin/pm2 start dist/index.js -i 0 --name 'smart-drive-backend'",
+    "start": "npm-run-all --parallel lint start:dev",
+    "start:dev": "better-npm-run start-dev",
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "rimraf ./dist",
+    "prebuild": "npm run clean-dist",
+    "build": "cross-env ./node_modules/.bin/babel src --out-dir dist",
+    "serve": "NODE_ENV=production&& node ./dist/index.js",
+    "initdb": "cross-env ./db/init.sh smartdrive",
+    "initdb-test": "cross-env ./db/init.sh smartdrive_test",
+    "initdb-production": "cross-env ./db/init.sh smartdrive_production",
+    "test": "NODE_ENV=test node_modules/.bin/nyc node_modules/.bin/mocha 'test/**/*.spec.js'",
+    "lint": "eslint src --color"
+  },
+  "betterScripts": {
+    "start-dev": {
+      "command": "nodemon src/index.js --exec babel-node",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development",
+        "PORT": 5005
+      }
+    },
+    "start-prod": {
+      "command": "cross-env ./node_modules/.bin/babel src --out-dir dist && node ./dist/index.js",
+      "env": {
+        "NODE_PATH": "./dist",
+        "NODE_ENV": "production",
+        "PORT": 5005
+      }
+    }
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "base-64": "^0.1.0",
+    "better-npm-run": "^0.1.0",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.15.3",
+    "fs-extra": "^4.0.0",
+    "jsonwebtoken": "^7.4.1",
+    "mathjs": "^3.20.2",
+    "moment": "^2.22.2",
+    "morgan": "^1.8.2",
+    "node-cron": "^1.2.1",
+    "pg": "^7.0.2",
+    "pg-format": "^1.0.4",
+    "pg-hstore": "^2.3.2",
+    "pg-promise": "^6.3.5",
+    "ramda": "^0.24.1",
+    "request": "^2.87.0",
+    "winston": "^2.4.1",
+    "xls": "^0.5.1",
+    "xlsx": "^0.13.1"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-airbnb": "^2.4.0",
+    "chai": "^4.1.0",
+    "cross-env": "^5.0.5",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-dest": "^0.2.0",
+    "gulp-eslint": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-watch": "^4.3.11",
+    "mocha": "^3.4.2",
+    "nodemon": "^1.12.1",
+    "npm-run-all": "^4.1.1",
+    "nyc": "^11.0.3",
+    "pm2": "^2.5.0",
+    "proxyquire": "^1.8.0",
+    "rimraf": "^2.6.2",
+    "sinon": "^2.3.7",
+    "supertest": "^3.0.0"
+  }
+}

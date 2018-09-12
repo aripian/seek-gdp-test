@@ -1,0 +1,11 @@
+{
+    "env": {
+        "development": {
+            "minified": false
+        },
+        "production": {
+            "minified": true
+        }
+    },
+    "presets": ["airbnb"]
+}
