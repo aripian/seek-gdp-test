@@ -66,9 +66,17 @@ const calculateDiscounts = (data, cb) => {
         totalStandout *= ad.standout;
         totalPremium *= ad.premium;
       }
-      console.log(totalClassic);
-      console.log(totalStandout);
-      console.log(totalPremium);
+
+      if (totalClassic % 1 === 0) {
+        totalClassic *= ad.classic;
+      }
+      if (totalStandout % 1 === 0) {
+        totalStandout *= ad.standout;
+      }
+      if (totalPremium % 1 === 0) {
+        totalPremium *= ad.premium;
+      }
+
       totalPrice = totalClassic + totalStandout + totalPremium;
     }
 
