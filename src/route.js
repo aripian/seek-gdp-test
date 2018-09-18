@@ -1,5 +1,4 @@
 import main from './main';
-import report from './report';
 
 const routes = (app) => {
   const router = app.get('router');
@@ -8,7 +7,7 @@ const routes = (app) => {
     const data = req.body;
 
     main.calculateDiscounts(data, (cb) => {
-      res.send(cb.res);
+      res.send(cb);
     });
   });
 

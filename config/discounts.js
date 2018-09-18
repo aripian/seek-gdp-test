@@ -11,10 +11,10 @@ module.exports = {
 		rule:'standout',
 		calculation:'-1 * 299.99',
 	},
-	standoutFour:{
+	premiumFour:{
 		type:'cal',
-		ad: 'standout',
-		rule:'-1 > 2',
+		ad: 'premium',
+		rule:'-1 > 4',
 		calculation:'-1 * 379.99',
 	},
 	classicFive4Four:{

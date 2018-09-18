@@ -6,7 +6,7 @@ module.exports = {
 		discounts:['standoutDiscount'],
 	},
 	nike:{
-		discounts:['standoutFour']
+		discounts:['premiumFour']
 	},
 	ford:{
 		discounts:['classicFive4Four', 'standoutDiscount2', 'premiumDiscount3More']
