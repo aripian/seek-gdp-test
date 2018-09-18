@@ -1,9 +1,5 @@
 import express from 'express';
-// import promise from 'bluebird';
-// import pgPromise from 'pg-promise';
 import bodyParser from 'body-parser';
-// import conn from '../config/connections';
-// import paygate from '../config/paygate';
 import routes from './route';
 import { logger, morgan } from './utils/logger';
 

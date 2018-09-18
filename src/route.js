@@ -4,18 +4,11 @@ import report from './report';
 const routes = (app) => {
   const router = app.get('router');
 
-  router.post('/insert-info', (req, res) => {
+  router.post('/calculate-add', (req, res) => {
     const data = req.body;
 
-    main.insertInfoData(data, (cb) => {
+    main.calculateDiscounts(data, (cb) => {
       res.send(cb.res);
-    });
-  });
-
-  router.get('/report', (req, res) => {
-    report.genReport();
-    res.send({
-      email: 'sent',
     });
   });
 
